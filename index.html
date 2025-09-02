@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MiawMiaw</title>
+  <meta name="description" content="Personal card — coolyeah task." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #105fe9ff;
+      --card: rgba(221, 30, 30, 0.06);
+      --card-border: rgba(255,255,255,0.12);
+      --text: #e8edf3;
+      --muted: #9fb0c5;
+      --accent: #7cd3ff;
+      --bad: #ff8892;
+      --good: #7dffa6;
+      --radius: 20px;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text); background:var(--bg);
+      display:grid; place-items:center; padding:32px;
+    }
+
+    /* Background video (optional) */
+    .bg{
+      position:fixed; inset:0; overflow:hidden; z-index:-2;
+      pointer-events:none;
+    }
+    .bg video{
+      position:absolute; min-width:100%; min-height:100%;
+      top:50%; left:50%; transform:translate(-50%,-50%);
+      filter:brightness(.35) saturate(1.2) blur(1px);
+    }
+    .bg::after{
+      content:""; position:absolute; inset:0;
+      background:radial-gradient(60% 60% at 70% 20%, rgba(124,211,255,.25), transparent 60%),
+                 linear-gradient(to bottom, rgba(0,0,0,.25), rgba(12,15,20,.9) 55%, rgba(12,15,20,1));
+      z-index:1;
+    }
+
+    .card{
+      width:min(900px, 100%);
+      background:var(--card); backdrop-filter: blur(10px);
+      border:1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    header{
+      padding:28px 28px 8px; position:relative;
+    }
+    .eyebrow{
+      font-weight:800; letter-spacing:.12em; text-transform:uppercase; font-size:.82rem; color:var(--accent);
+    }
+    h1{
+      margin:.25rem 0 0; font-size:clamp(1.6rem,2.5vw,2.15rem);
+    }
+    .subtitle{
+      color:var(--muted); margin:.35rem 0 0 0; font-size:.95rem;
+    }
+    .content{
+      display:grid; gap:18px; padding:20px 24px 28px;
+      grid-template-columns: 1.1fr .9fr;
+    }
+    @media (max-width:800px){
+      .content{ grid-template-columns:1fr }
+    }
+    .section{
+      background:rgba(255,255,255,.05);
+      border:1px dashed var(--card-border);
+      border-radius: 16px; padding:18px 18px 16px;
+    }
+    .section h2{
+      font-size:1rem; margin:0 0 .75rem; letter-spacing:.04em; color:var(--accent);
+      text-transform:uppercase;
+    }
+    .kv{
+      display:grid; grid-template-columns: 140px 1fr; gap:8px 16px; align-items:center;
+    }
+    .kv dt{ color:var(--muted) }
+    .kv dd{ margin:0; font-weight:600 }
+
+    .list{
+      display:grid; gap:10px; margin:0; padding-left:1rem;
+    }
+    .list li{ margin-left:.25rem }
+    .good li::marker{ content:"✔ "; }
+    .bad li::marker{ content:"✘ "; }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:.5rem; text-decoration:none;
+      color:var(--bg); background:var(--accent); border-radius:999px; padding:.6rem 1rem; font-weight:700;
+      box-shadow: 0 6px 20px rgba(124,211,255,.35);
+      transition:.2s transform ease, .2s box-shadow ease;
+    }
+    .pill:hover{ transform:translateY(-2px); box-shadow:0 10px 28px rgba(124,211,255,.45) }
+    .footer{
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      padding:14px 20px; border-top:1px solid var(--card-border); color:var(--muted); font-size:.9rem;
+      background:linear-gradient(to right, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+    .hint{ font-style:italic; color:#9cd1ff; opacity:.9 }
+    .tenxi{ /* “nyempil”/tucked hint */ 
+      position:absolute; right:18px; top:18px; font-size:.75rem; color:#a7ffcf; opacity:.85;
+      background:rgba(0,0,0,.25); border:1px solid rgba(255,255,255,.15); border-radius:999px; padding:.25rem .6rem;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="bg" aria-hidden="true">
+    <video src="My istri.mp4" autoplay muted loop playsinline></video>
+  </div>
+
+  <main class="card" role="main">
+    <header>
+      <div class="eyebrow"># like komen saskreb</div>
+      <h1>nyoba.</h1>
+      <p class="subtitle">Personal card</p>
+      <span class="tenxi" title="hint">tenxi nyempil</span>
+    </header>
+
+    <section class="content" aria-labelledby="about">
+      <div class="section">
+        <h2 id="about">'bout me</h2>
+        <dl class="kv">
+          <dt>Name:</dt><dd>Kaoruko Waguri</dd>
+          <dt>Age:</dt><dd>17</dd>
+          <dt>Status:</dt><dd>My istri</dd>
+        </dl>
+      </div>
+
+      <div class="section">
+        <h2>Links</h2>
+        <a class="pill" href="https://www.youtube.com" target="_blank" rel="noopener">My yutub</a>
+        <p style="margin:.75rem 0 0; color:var(--muted); font-size:.9rem"></p>
+      </div>
+
+      <div class="section">
+        <h2>yayaya</h2>
+        <ul class="list good">
+          <li>turu</li>
+          <li>mangan</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>gagaga</h2>
+        <ul class="list bad">
+          <li>ngudud</li>
+          <li>parlay</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="footer" role="contentinfo">
+      <div class="hint" aria-hidden="true">psst… “tenxi nyempil” ➜ teks kecil yang “nyelip” 🤫</div>
+    </footer>
+  </main>
+</body>
+</html>
